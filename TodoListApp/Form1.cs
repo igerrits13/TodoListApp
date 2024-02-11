@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Windows.Forms.VisualStyles;
 
 namespace TodoListApp
 {
@@ -19,6 +20,8 @@ namespace TodoListApp
 
         DataTable todoList = new DataTable();
         bool isEditing = false;
+        DateTime tempDate = DateTime.Today;
+        DataRow tempRow = null;
 
         private void ToDoList_Load(object sender, EventArgs e)
         {
@@ -47,12 +50,17 @@ namespace TodoListApp
             textBoxTitle.Text = todoList.Rows[toDoListView.CurrentCell.RowIndex].ItemArray[0].ToString();
             textBoxDescription.Text = todoList.Rows[toDoListView.CurrentCell.RowIndex].ItemArray[1].ToString();
             timePickerDueDate.Value = DateTime.Parse(todoList.Rows[toDoListView.CurrentCell.RowIndex].ItemArray[3].ToString());
+
+            tempRow = todoList.Rows[toDoListView.CurrentCell.RowIndex];
+            tempDate = timePickerDueDate.Value;
         }
 
         private void buttonDelete_Click(object sender, EventArgs e)
         {
             try
             {
+                removeDate(DateTime.Parse(todoList.Rows[toDoListView.CurrentCell.RowIndex].ItemArray[3].ToString()),
+                    todoList.Rows[toDoListView.CurrentCell.RowIndex]);
                 todoList.Rows[toDoListView.CurrentCell.RowIndex].Delete();
             }
 
@@ -66,10 +74,13 @@ namespace TodoListApp
         {
             if(isEditing) 
             {
-                todoList.Rows[toDoListView.CurrentCell.RowIndex]["Title"] = textBoxTitle.Text;
-                todoList.Rows[toDoListView.CurrentCell.RowIndex]["Description"] = textBoxDescription.Text;
-                todoList.Rows[toDoListView.CurrentCell.RowIndex]["Created"] = DateTime.Now.ToString("MM/dd/yyyy");
-                todoList.Rows[toDoListView.CurrentCell.RowIndex]["Due"] = timePickerDueDate.Value.ToString("MM/dd/yyyy");
+                tempRow["Title"] = textBoxTitle.Text;
+                tempRow["Description"] = textBoxDescription.Text;
+                tempRow["Created"] = DateTime.Now.ToString("MM/dd/yyyy");
+                tempRow["Due"] = timePickerDueDate.Value.ToString("MM/dd/yyyy");
+                removeDate(tempDate, tempRow);
+                monthCalendar.AddBoldedDate(timePickerDueDate.Value);
+                monthCalendar.UpdateBoldedDates();
             }
 
             else
@@ -78,6 +89,8 @@ namespace TodoListApp
                     textBoxDescription.Text,
                     DateTime.Now.ToString("MM/dd/yyyy"),
                     timePickerDueDate.Value.ToString("MM/dd/yyyy"));
+                monthCalendar.AddBoldedDate(timePickerDueDate.Value);
+                monthCalendar.UpdateBoldedDates();
             }
 
             // Clear all fields
@@ -94,6 +107,28 @@ namespace TodoListApp
                 timePickerDueDate.Value = DateTime.Today;
                 MessageBox.Show("Please select a future due date");
             }
+        }
+
+        /*
+         * Helper method to remove bolding from the date if there are no more tasks due on that date.
+         */
+        private void removeDate(DateTime date, DataRow row)
+        {
+            // Only remove bolding if there are no other tasks due on the same date
+            foreach (DataRow item in todoList.Rows)
+            {
+                if(item != row)
+                {
+                    if(DateTime.Parse(item.ItemArray[3].ToString()) == date)
+                    {
+                        return;
+                    }
+                }
+            }
+
+            monthCalendar.RemoveBoldedDate(date);
+            monthCalendar.UpdateBoldedDates();
+            return;
         }
     }
 }

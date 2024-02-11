@@ -38,9 +38,10 @@
             this.buttonDelete = new System.Windows.Forms.Button();
             this.buttonSave = new System.Windows.Forms.Button();
             this.toDoListView = new System.Windows.Forms.DataGridView();
-            this.monthCalendar1 = new System.Windows.Forms.MonthCalendar();
+            this.monthCalendar = new System.Windows.Forms.MonthCalendar();
             this.label4 = new System.Windows.Forms.Label();
             this.timePickerDueDate = new System.Windows.Forms.DateTimePicker();
+            this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             ((System.ComponentModel.ISupportInitialize)(this.toDoListView)).BeginInit();
             this.SuspendLayout();
             // 
@@ -137,11 +138,11 @@
             this.toDoListView.Size = new System.Drawing.Size(962, 325);
             this.toDoListView.TabIndex = 9;
             // 
-            // monthCalendar1
+            // monthCalendar
             // 
-            this.monthCalendar1.Location = new System.Drawing.Point(12, 57);
-            this.monthCalendar1.Name = "monthCalendar1";
-            this.monthCalendar1.TabIndex = 10;
+            this.monthCalendar.Location = new System.Drawing.Point(12, 57);
+            this.monthCalendar.Name = "monthCalendar";
+            this.monthCalendar.TabIndex = 10;
             // 
             // label4
             // 
@@ -170,7 +171,7 @@
             this.ClientSize = new System.Drawing.Size(987, 568);
             this.Controls.Add(this.timePickerDueDate);
             this.Controls.Add(this.label4);
-            this.Controls.Add(this.monthCalendar1);
+            this.Controls.Add(this.monthCalendar);
             this.Controls.Add(this.toDoListView);
             this.Controls.Add(this.buttonSave);
             this.Controls.Add(this.buttonDelete);
@@ -202,9 +203,10 @@
         private System.Windows.Forms.Button buttonDelete;
         private System.Windows.Forms.Button buttonSave;
         private System.Windows.Forms.DataGridView toDoListView;
-        private System.Windows.Forms.MonthCalendar monthCalendar1;
+        private System.Windows.Forms.MonthCalendar monthCalendar;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.DateTimePicker timePickerDueDate;
+        private System.ComponentModel.BackgroundWorker backgroundWorker1;
     }
 }
 
