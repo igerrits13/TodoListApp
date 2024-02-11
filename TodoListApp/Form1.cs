@@ -25,6 +25,8 @@ namespace TodoListApp
             // Create columns
             todoList.Columns.Add("Title");
             todoList.Columns.Add("Description");
+            todoList.Columns.Add("Created");
+            todoList.Columns.Add("Due");
 
             // Point our datagridview to our datasource
             toDoListView.DataSource = todoList;
@@ -34,6 +36,7 @@ namespace TodoListApp
         {
             textBoxTitle.Text = "";
             textBoxDescription.Text = "";
+            timePickerDueDate.Value = DateTime.Today;
         }
 
         private void buttonEdit_Click(object sender, EventArgs e)
@@ -43,6 +46,7 @@ namespace TodoListApp
             // Fill text field with data from table
             textBoxTitle.Text = todoList.Rows[toDoListView.CurrentCell.RowIndex].ItemArray[0].ToString();
             textBoxDescription.Text = todoList.Rows[toDoListView.CurrentCell.RowIndex].ItemArray[1].ToString();
+            timePickerDueDate.Value = DateTime.Parse(todoList.Rows[toDoListView.CurrentCell.RowIndex].ItemArray[3].ToString());
         }
 
         private void buttonDelete_Click(object sender, EventArgs e)
@@ -64,17 +68,32 @@ namespace TodoListApp
             {
                 todoList.Rows[toDoListView.CurrentCell.RowIndex]["Title"] = textBoxTitle.Text;
                 todoList.Rows[toDoListView.CurrentCell.RowIndex]["Description"] = textBoxDescription.Text;
+                todoList.Rows[toDoListView.CurrentCell.RowIndex]["Created"] = DateTime.Now.ToString("MM/dd/yyyy");
+                todoList.Rows[toDoListView.CurrentCell.RowIndex]["Due"] = timePickerDueDate.Value.ToString("MM/dd/yyyy");
             }
 
             else
             {
-                todoList.Rows.Add(textBoxTitle.Text, textBoxDescription.Text);
+                todoList.Rows.Add(textBoxTitle.Text,
+                    textBoxDescription.Text,
+                    DateTime.Now.ToString("MM/dd/yyyy"),
+                    timePickerDueDate.Value.ToString("MM/dd/yyyy"));
             }
 
             // Clear all fields
             textBoxTitle.Text = "";
             textBoxDescription.Text = "";
+            timePickerDueDate.Value = DateTime.Today;
             isEditing = false;
+        }
+
+        private void timePickerDueDate_ValueChanged(object sender, EventArgs e)
+        {
+            if (timePickerDueDate.Value <  DateTime.Today) 
+            {
+                timePickerDueDate.Value = DateTime.Today;
+                MessageBox.Show("Please select a future due date");
+            }
         }
     }
 }

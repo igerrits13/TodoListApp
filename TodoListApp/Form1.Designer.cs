@@ -38,39 +38,42 @@
             this.buttonDelete = new System.Windows.Forms.Button();
             this.buttonSave = new System.Windows.Forms.Button();
             this.toDoListView = new System.Windows.Forms.DataGridView();
+            this.monthCalendar1 = new System.Windows.Forms.MonthCalendar();
+            this.label4 = new System.Windows.Forms.Label();
+            this.timePickerDueDate = new System.Windows.Forms.DateTimePicker();
             ((System.ComponentModel.ISupportInitialize)(this.toDoListView)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
             // 
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 36F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(13, 13);
+            this.label1.Location = new System.Drawing.Point(253, 13);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(962, 76);
+            this.label1.Size = new System.Drawing.Size(722, 55);
             this.label1.TabIndex = 0;
             this.label1.Text = "To-Do List";
             this.label1.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
             // textBoxTitle
             // 
-            this.textBoxTitle.Location = new System.Drawing.Point(12, 119);
+            this.textBoxTitle.Location = new System.Drawing.Point(253, 94);
             this.textBoxTitle.Name = "textBoxTitle";
-            this.textBoxTitle.Size = new System.Drawing.Size(962, 20);
+            this.textBoxTitle.Size = new System.Drawing.Size(722, 20);
             this.textBoxTitle.TabIndex = 1;
             // 
             // textBoxDescription
             // 
-            this.textBoxDescription.Location = new System.Drawing.Point(12, 168);
+            this.textBoxDescription.Location = new System.Drawing.Point(253, 143);
             this.textBoxDescription.Name = "textBoxDescription";
-            this.textBoxDescription.Size = new System.Drawing.Size(962, 20);
+            this.textBoxDescription.Size = new System.Drawing.Size(722, 20);
             this.textBoxDescription.TabIndex = 2;
             // 
             // label2
             // 
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(13, 93);
+            this.label2.Location = new System.Drawing.Point(254, 68);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(961, 23);
+            this.label2.Size = new System.Drawing.Size(721, 23);
             this.label2.TabIndex = 3;
             this.label2.Text = "Title:";
             this.label2.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
@@ -78,18 +81,18 @@
             // label3
             // 
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(13, 142);
+            this.label3.Location = new System.Drawing.Point(254, 117);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(961, 23);
+            this.label3.Size = new System.Drawing.Size(721, 23);
             this.label3.TabIndex = 4;
             this.label3.Text = "Description:";
             this.label3.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
             // 
             // buttonNew
             // 
-            this.buttonNew.Location = new System.Drawing.Point(12, 194);
+            this.buttonNew.Location = new System.Drawing.Point(251, 195);
             this.buttonNew.Name = "buttonNew";
-            this.buttonNew.Size = new System.Drawing.Size(237, 30);
+            this.buttonNew.Size = new System.Drawing.Size(177, 30);
             this.buttonNew.TabIndex = 5;
             this.buttonNew.Text = "New";
             this.buttonNew.UseVisualStyleBackColor = true;
@@ -97,9 +100,9 @@
             // 
             // buttonEdit
             // 
-            this.buttonEdit.Location = new System.Drawing.Point(253, 194);
+            this.buttonEdit.Location = new System.Drawing.Point(432, 195);
             this.buttonEdit.Name = "buttonEdit";
-            this.buttonEdit.Size = new System.Drawing.Size(237, 30);
+            this.buttonEdit.Size = new System.Drawing.Size(177, 30);
             this.buttonEdit.TabIndex = 6;
             this.buttonEdit.Text = "Edit";
             this.buttonEdit.UseVisualStyleBackColor = true;
@@ -107,9 +110,9 @@
             // 
             // buttonDelete
             // 
-            this.buttonDelete.Location = new System.Drawing.Point(495, 194);
+            this.buttonDelete.Location = new System.Drawing.Point(614, 195);
             this.buttonDelete.Name = "buttonDelete";
-            this.buttonDelete.Size = new System.Drawing.Size(237, 30);
+            this.buttonDelete.Size = new System.Drawing.Size(177, 30);
             this.buttonDelete.TabIndex = 7;
             this.buttonDelete.Text = "Delete";
             this.buttonDelete.UseVisualStyleBackColor = true;
@@ -117,9 +120,9 @@
             // 
             // buttonSave
             // 
-            this.buttonSave.Location = new System.Drawing.Point(738, 194);
+            this.buttonSave.Location = new System.Drawing.Point(796, 195);
             this.buttonSave.Name = "buttonSave";
-            this.buttonSave.Size = new System.Drawing.Size(237, 30);
+            this.buttonSave.Size = new System.Drawing.Size(177, 30);
             this.buttonSave.TabIndex = 8;
             this.buttonSave.Text = "Save";
             this.buttonSave.UseVisualStyleBackColor = true;
@@ -134,11 +137,40 @@
             this.toDoListView.Size = new System.Drawing.Size(962, 325);
             this.toDoListView.TabIndex = 9;
             // 
+            // monthCalendar1
+            // 
+            this.monthCalendar1.Location = new System.Drawing.Point(12, 57);
+            this.monthCalendar1.Name = "monthCalendar1";
+            this.monthCalendar1.TabIndex = 10;
+            // 
+            // label4
+            // 
+            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Location = new System.Drawing.Point(253, 166);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(721, 23);
+            this.label4.TabIndex = 12;
+            this.label4.Text = "Due Date:";
+            this.label4.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
+            // 
+            // timePickerDueDate
+            // 
+            this.timePickerDueDate.Location = new System.Drawing.Point(320, 169);
+            this.timePickerDueDate.MaxDate = new System.DateTime(2100, 12, 31, 0, 0, 0, 0);
+            this.timePickerDueDate.MinDate = new System.DateTime(1900, 1, 1, 0, 0, 0, 0);
+            this.timePickerDueDate.Name = "timePickerDueDate";
+            this.timePickerDueDate.Size = new System.Drawing.Size(200, 20);
+            this.timePickerDueDate.TabIndex = 13;
+            this.timePickerDueDate.ValueChanged += new System.EventHandler(this.timePickerDueDate_ValueChanged);
+            // 
             // ToDoList
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(987, 568);
+            this.Controls.Add(this.timePickerDueDate);
+            this.Controls.Add(this.label4);
+            this.Controls.Add(this.monthCalendar1);
             this.Controls.Add(this.toDoListView);
             this.Controls.Add(this.buttonSave);
             this.Controls.Add(this.buttonDelete);
@@ -170,6 +202,9 @@
         private System.Windows.Forms.Button buttonDelete;
         private System.Windows.Forms.Button buttonSave;
         private System.Windows.Forms.DataGridView toDoListView;
+        private System.Windows.Forms.MonthCalendar monthCalendar1;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.DateTimePicker timePickerDueDate;
     }
 }
 
