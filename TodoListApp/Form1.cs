@@ -72,7 +72,13 @@ namespace TodoListApp
 
         private void buttonSave_Click(object sender, EventArgs e)
         {
-            if(isEditing) 
+            if(!testDesctiption(textBoxTitle.Text))
+            {
+                MessageBox.Show("Please make sure all tasks have unique descriptions.");
+                return;
+            }
+
+            else if(isEditing) 
             {
                 tempRow["Title"] = textBoxTitle.Text;
                 tempRow["Description"] = textBoxDescription.Text;
@@ -98,6 +104,39 @@ namespace TodoListApp
             textBoxDescription.Text = "";
             timePickerDueDate.Value = DateTime.Today;
             isEditing = false;
+
+            // Sort based on sorting
+            switch (boxSort.SelectedIndex)
+            {
+                case 0:
+                    sortByNone();
+                    break;
+                case 1:
+                    sortByTitle();
+                    break;
+
+                case 2:
+                    sortByCreated();
+                    break;
+
+                case 3:
+                    sortByDue();
+                    break;
+            }
+        }
+
+        // Confirm that title unique
+        private bool testDesctiption(String title)
+        {
+            foreach (DataRow item in todoList.Rows)
+            {
+                if (item.ItemArray[0].ToString() == title)
+                {
+                    return false;
+                }
+            }
+
+            return true;
         }
 
         private void timePickerDueDate_ValueChanged(object sender, EventArgs e)
@@ -105,7 +144,7 @@ namespace TodoListApp
             if (timePickerDueDate.Value <  DateTime.Today) 
             {
                 timePickerDueDate.Value = DateTime.Today;
-                MessageBox.Show("Please select a future due date");
+                MessageBox.Show("Please select a future due date.");
             }
         }
 
@@ -129,6 +168,58 @@ namespace TodoListApp
             monthCalendar.RemoveBoldedDate(date);
             monthCalendar.UpdateBoldedDates();
             return;
+        }
+
+        private void boxSort_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            switch(boxSort.SelectedIndex)
+            {
+                case 0:
+                    sortByNone();
+                    break;
+                case 1:
+                    sortByTitle();
+                    break;
+                
+                case 2:
+                    sortByCreated();
+                    break;
+
+                case 3:
+                    sortByDue();
+                    break;
+            }
+        }
+
+        // Apply no sorting
+        private void sortByNone()
+        {
+            Console.WriteLine("Sorting None");
+            foreach (DataGridViewColumn column in toDoListView.Columns)
+            {
+                column.SortMode = DataGridViewColumnSortMode.NotSortable;
+            }
+        }
+
+        // Accomplish with selectionsort
+        private void sortByTitle()
+        {
+            Console.WriteLine("Sorting Title");
+            toDoListView.Sort(toDoListView.Columns["Title"], ListSortDirection.Ascending);
+        }
+
+        // Accomplish with mergesort
+        private void sortByCreated()
+        {
+            Console.WriteLine("Sorting Created");
+            toDoListView.Sort(toDoListView.Columns["Created"], ListSortDirection.Ascending);
+        }
+
+        // Accomplish with quicksort
+        private void sortByDue()
+        {
+            Console.WriteLine("Sorting Due");
+            toDoListView.Sort(toDoListView.Columns["Due"], ListSortDirection.Ascending);
         }
     }
 }

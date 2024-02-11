@@ -41,7 +41,7 @@
             this.monthCalendar = new System.Windows.Forms.MonthCalendar();
             this.label4 = new System.Windows.Forms.Label();
             this.timePickerDueDate = new System.Windows.Forms.DateTimePicker();
-            this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
+            this.boxSort = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.toDoListView)).BeginInit();
             this.SuspendLayout();
             // 
@@ -101,7 +101,7 @@
             // 
             // buttonEdit
             // 
-            this.buttonEdit.Location = new System.Drawing.Point(432, 195);
+            this.buttonEdit.Location = new System.Drawing.Point(434, 195);
             this.buttonEdit.Name = "buttonEdit";
             this.buttonEdit.Size = new System.Drawing.Size(177, 30);
             this.buttonEdit.TabIndex = 6;
@@ -111,7 +111,7 @@
             // 
             // buttonDelete
             // 
-            this.buttonDelete.Location = new System.Drawing.Point(614, 195);
+            this.buttonDelete.Location = new System.Drawing.Point(616, 195);
             this.buttonDelete.Name = "buttonDelete";
             this.buttonDelete.Size = new System.Drawing.Size(177, 30);
             this.buttonDelete.TabIndex = 7;
@@ -121,7 +121,7 @@
             // 
             // buttonSave
             // 
-            this.buttonSave.Location = new System.Drawing.Point(796, 195);
+            this.buttonSave.Location = new System.Drawing.Point(798, 195);
             this.buttonSave.Name = "buttonSave";
             this.buttonSave.Size = new System.Drawing.Size(177, 30);
             this.buttonSave.TabIndex = 8;
@@ -164,11 +164,28 @@
             this.timePickerDueDate.TabIndex = 13;
             this.timePickerDueDate.ValueChanged += new System.EventHandler(this.timePickerDueDate_ValueChanged);
             // 
+            // boxSort
+            // 
+            this.boxSort.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.boxSort.FormattingEnabled = true;
+            this.boxSort.Items.AddRange(new object[] {
+            "Sort By: None",
+            "Sort By: Title",
+            "Sort By: Created",
+            "Sort By: Due Date"});
+            this.boxSort.Location = new System.Drawing.Point(829, 166);
+            this.boxSort.Name = "boxSort";
+            this.boxSort.Size = new System.Drawing.Size(146, 24);
+            this.boxSort.TabIndex = 14;
+            this.boxSort.Text = "Sort By:";
+            this.boxSort.SelectedIndexChanged += new System.EventHandler(this.boxSort_SelectedIndexChanged);
+            // 
             // ToDoList
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(987, 568);
+            this.Controls.Add(this.boxSort);
             this.Controls.Add(this.timePickerDueDate);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.monthCalendar);
@@ -206,7 +223,7 @@
         private System.Windows.Forms.MonthCalendar monthCalendar;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.DateTimePicker timePickerDueDate;
-        private System.ComponentModel.BackgroundWorker backgroundWorker1;
+        private System.Windows.Forms.ComboBox boxSort;
     }
 }
 
