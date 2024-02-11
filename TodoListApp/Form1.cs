@@ -72,9 +72,15 @@ namespace TodoListApp
 
         private void buttonSave_Click(object sender, EventArgs e)
         {
-            if(!testDesctiption(textBoxTitle.Text))
+            if(textBoxTitle.Text == String.Empty)
             {
-                MessageBox.Show("Please make sure all tasks have unique descriptions.");
+                MessageBox.Show("Task must have a valid title.");
+                return;
+            }
+
+            else if(!testTitle(textBoxTitle.Text))
+            {
+                MessageBox.Show("Please make sure all tasks have unique titles.");
                 return;
             }
 
@@ -126,7 +132,7 @@ namespace TodoListApp
         }
 
         // Confirm that title unique
-        private bool testDesctiption(String title)
+        private bool testTitle(String title)
         {
             foreach (DataRow item in todoList.Rows)
             {
@@ -160,6 +166,7 @@ namespace TodoListApp
                 {
                     if(DateTime.Parse(item.ItemArray[3].ToString()) == date)
                     {
+                        Console.WriteLine("Dates match");
                         return;
                     }
                 }
