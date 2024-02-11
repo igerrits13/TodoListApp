@@ -30,6 +30,51 @@ namespace TodoListApp
             toDoListView.DataSource = todoList;
         }
 
+        private void buttonNew_Click(object sender, EventArgs e)
+        {
+            textBoxTitle.Text = "";
+            textBoxDescription.Text = "";
+        }
 
+        private void buttonEdit_Click(object sender, EventArgs e)
+        {
+            isEditing = true;
+
+            // Fill text field with data from table
+            textBoxTitle.Text = todoList.Rows[toDoListView.CurrentCell.RowIndex].ItemArray[0].ToString();
+            textBoxDescription.Text = todoList.Rows[toDoListView.CurrentCell.RowIndex].ItemArray[1].ToString();
+        }
+
+        private void buttonDelete_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                todoList.Rows[toDoListView.CurrentCell.RowIndex].Delete();
+            }
+
+            catch(Exception ex)
+            {
+                Console.WriteLine("Error: " + ex);
+            }
+        }
+
+        private void buttonSave_Click(object sender, EventArgs e)
+        {
+            if(isEditing) 
+            {
+                todoList.Rows[toDoListView.CurrentCell.RowIndex]["Title"] = textBoxTitle.Text;
+                todoList.Rows[toDoListView.CurrentCell.RowIndex]["Description"] = textBoxDescription.Text;
+            }
+
+            else
+            {
+                todoList.Rows.Add(textBoxTitle.Text, textBoxDescription.Text);
+            }
+
+            // Clear all fields
+            textBoxTitle.Text = "";
+            textBoxDescription.Text = "";
+            isEditing = false;
+        }
     }
 }
